@@ -1,6 +1,7 @@
 *.png
 *.txt
 *.pptx
+forecasts
 ristretto
 !ristretto/dimensionality-reduction.ipynb
 
