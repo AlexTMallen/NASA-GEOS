@@ -4,6 +4,8 @@
 forecasts
 ristretto
 !ristretto/dimensionality-reduction.ipynb
+data
+!data/map.pt
 
 .ipynb_checkpoints
 
