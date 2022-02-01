@@ -6,7 +6,9 @@ ristretto
 !ristretto/dimensionality-reduction.ipynb
 data
 !data/map.pt
-
+*.pt
+*.TIFF
+*.zip
 .ipynb_checkpoints
 
 # Byte-compiled / optimized / DLL files
