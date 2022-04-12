@@ -11,7 +11,10 @@ data
 *.TIFF
 *.zip
 .ipynb_checkpoints
+.DS_Store
+*.pkl
 HighNO2/
+stations/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
