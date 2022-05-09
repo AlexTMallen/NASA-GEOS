@@ -4,6 +4,7 @@
 forecasts
 ristretto
 !ristretto/dimensionality-reduction.ipynb
+all
 data
 !data/map.pt
 *.pt
