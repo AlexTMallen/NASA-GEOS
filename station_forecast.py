@@ -1,3 +1,8 @@
+"""
+Train DPK models for stations around the globe, 
+so that they can be used in multidimensional anomaly detecton in anomaly-detection-regions.ipynb
+"""
+
 import random
 import torch
 import numpy as np
@@ -26,7 +31,7 @@ from dpk.koopman_probabilistic import KoopmanProb
 from dpk.model_objs import NormalNLL
 
 
-def train(station_fname, station, quality_thresh=0.5, debug=False):
+def train(station_fname, debug=False):
     start_date = np.datetime64("2018-01-01")  # sometimes there's data from before jan 1 2018, let's ignore that
     end_date = np.datetime64("2021-01-01") # exclusive
     t_min = time.mktime(dt.datetime(2018, 1, 1).timetuple())
@@ -140,19 +145,18 @@ def main():
         metadata = json.loads(f.read())
     quality_thresh = 0.5
 
-    cluster_id = 3
+    cluster_ids = {"milan", "losangeles", "wuhan"}
     temp = []
     for fname in metadata:
         temp.append(metadata[fname])
         temp[-1]["fname"] = fname
     df_meta = pd.DataFrame(temp)
-    rows = df_meta.loc[[(cluster_id in r.clusters and r.quality > quality_thresh) for r in df_meta.iloc]]
+    rows = df_meta.loc[[(cluster_ids.intersection(r.clusters) and r.quality > quality_thresh) for r in df_meta.iloc]]
     for row in rows.iloc:
-        station = row.station
         station_fname = row.fname
         print("\n"*2)
         print("WORKING ON", station_fname)
-        train(station_fname, station, quality_thresh=quality_thresh, debug=True)
+        train(station_fname, debug=True)
 
 if __name__ == "__main__":
     main()
