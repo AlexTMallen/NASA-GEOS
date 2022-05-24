@@ -74,8 +74,8 @@ def train(station_fname, debug=False):
         # plt.figure()
         # plt.plot(t, x)
     # split time-series
-    train_start_date = np.datetime64("2018-03-16")
-    train_end_date = np.datetime64("2020-03-16")  # covid start date
+    train_start_date = np.datetime64("2018-01-01")
+    train_end_date = np.datetime64("2020-01-01")  # covid start date
     covid_end_date = np.datetime64("2021-01-01")
     if station_fname.startswith("obs"):
         train_start = np.argwhere(obs.ISO8601.values >= train_start_date)[0, 0]
@@ -145,13 +145,13 @@ def main():
         metadata = json.loads(f.read())
     quality_thresh = 0.5
 
-    cluster_ids = {"milan", "losangeles", "wuhan"}
+    cluster_ids = {"wuhan"}
     temp = []
     for fname in metadata:
         temp.append(metadata[fname])
         temp[-1]["fname"] = fname
     df_meta = pd.DataFrame(temp)
-    rows = df_meta.loc[[(cluster_ids.intersection(r.clusters) and r.quality > quality_thresh) for r in df_meta.iloc]]
+    rows = df_meta.loc[[(bool(cluster_ids.intersection(r.clusters)) and r.quality > quality_thresh) for r in df_meta.iloc]]
     for row in rows.iloc:
         station_fname = row.fname
         print("\n"*2)
