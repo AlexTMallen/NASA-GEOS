@@ -145,7 +145,7 @@ def main():
         metadata = json.loads(f.read())
     quality_thresh = 0.5
 
-    cluster_ids = {"wuhan"}
+    cluster_ids = {"seattle"}
     temp = []
     for fname in metadata:
         temp.append(metadata[fname])
