@@ -145,7 +145,25 @@ def main():
         metadata = json.loads(f.read())
     quality_thresh = 0.5
 
-    cluster_ids = {"birmingham", "manchester", "london"} 
+    cluster_ids = { 'bangkok',
+                    'barcelona',
+                    'beijing',
+                    'berlin',
+                    'birmingham',
+                    'hongkong',
+                    'jerusalem',
+                    'london',
+                    'losangeles',
+                    'madrid',
+                    'manchester',
+                    'milan',
+                    'newyork',
+                    'paris',
+                    'santiago',
+                    'shanghai',
+                    'teipei',
+                    'tokyo',
+                    'wuhan'} 
     temp = []
     for fname in metadata:
         temp.append(metadata[fname])
