@@ -1,3 +1,7 @@
+*.eps
+*.svg
+*.json
+*.csv
 *.png
 *.txt
 *.pptx
